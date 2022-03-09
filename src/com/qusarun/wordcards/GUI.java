@@ -88,18 +88,13 @@ public class GUI extends JPanel {
             return;
         }
 
-        drawImage(g, words.get(0), 1 , 3 , 8, 8);
-        drawImage(g, words.get(1), 10, 3 , 8, 8);
-        drawImage(g, words.get(2), 1 , 12, 8, 8);
-        drawImage(g, words.get(3), 10, 12, 8, 8);
-
         g.setColor(text);
 
         drawCentered(g, word.split(":")[1], 19, 3);
-        drawHalfCentered(g, words.get(0).split(":")[0], 10, 2 );
-        drawHalfCentered(g, words.get(1).split(":")[0], 28, 2 );
-        drawHalfCentered(g, words.get(2).split(":")[0], 10, 11);
-        drawHalfCentered(g, words.get(3).split(":")[0], 28, 11);
+        drawCentered(g, words.get(0).split(":")[0], 10, 14);
+        drawCentered(g, words.get(1).split(":")[0], 28, 14);
+        drawCentered(g, words.get(2).split(":")[0], 10, 32);
+        drawCentered(g, words.get(3).split(":")[0], 28, 32);
     }
 
     private void drawHalfCentered(final Graphics g, final String s, final int x, final int y) {
@@ -143,15 +138,6 @@ public class GUI extends JPanel {
         correctOption = words.indexOf(word);
         pickedOption  = i;
         pickedTime    = System.currentTimeMillis();
-    }
-
-    private void drawImage(final Graphics g, final String s, final int x, final int y, final int width, final int height) {
-        final int partX = this.getWidth() / 19, partY = this.getHeight() / 21;
-        final BufferedImage img = read(s);
-        if (img == null)
-            return;
-        final int lowest = Math.min(width * partX, height * partY);
-        g.drawImage(img, x * partX + (width * partX - lowest) / 2, y * partY + (height * partY - lowest) / 2, lowest, lowest, null);
     }
 
     private BufferedImage read(final String s) {
